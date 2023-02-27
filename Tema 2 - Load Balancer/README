@@ -1,0 +1,37 @@
+Copyright 2021 <Paval Bogdan-Costin>
+
+Implementarea este facuta in doua fisiere: server.c si load_balancer.c.
+
+In server.c este implementat un hashtable cu ajutorul mai multor functii:
+	- init_server_memory: se aloca memorie pt un server/hashtable si
+	se formeaza campurile acestuia, apoi acesta este returnat;
+	- server_store: in baza cheii primite ca parametru, se aloca memorie
+	pt un nou element si se adauga pe pozitia potrivita;
+	- server_remove: elimina din server elementul ce are cheia primita ca
+	parametru in functie;
+	- server_retrieve: se cauta elementul ce are cheia egala cu cea primita
+	ca parametru si, daca exista, ii returneaza valoarea, iar daca nu exista,
+	returneaza NULL;
+	- free_server_memory: se dezaloca toata memoria ce a fost folosita pe 
+parcursul implementarii unui server.
+
+In load_balancer.c sunt gestionate mai multe servere si stocate informatiile
+in mod eficient, fiind folosite mai multe functii:
+	- init_load_balancer: se aloca memorie pt numarul maxim de servere si
+	pt hash_ring, unde vor fi stocate cele trei replici pt fiecare server;
+	- loader_store: se cauta serverul pe care trebuie stocat obiectul si 
+	apeleaza functia server_store pt a stoca pe server obiectul dat;
+	- loader_retrieve: cauta serverul pe care este stocat obiectul cu cheia
+	primita ca parametru, iar daca o gaseste atunci ii returneaza valoarea
+	folosindu-se de functia server_retrieve, iar daca nu a fost gasita 
+	cheia in sistem atunci returneaza NULL;
+	- loader_add_server: se creeaza serverul cu id-ul dat, apoi se adauga cele
+	trei replici in hash_ring; se verifica daca trebuie mutate obiecte de pe
+	serverele vecine pe	noul server adaugat;
+	- loader_remove_server: se elimina cele trei replici de pe hash_ring si 
+	se distribuie obiectele de pe acest server pe serverele vecine;
+	- free_load_balancer: se dezaloca toata memoria ce a fost folosita pe 
+parcursul implementarii.
+
+In implementare am folosit si Linkedlist folosit la laboratorul de hashtable
+pt a stoca elementele din server.

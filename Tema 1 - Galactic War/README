@@ -1,0 +1,45 @@
+	In main dupa ce se citeste numarul de comenzi, se creeaza o lista
+de planete. Se apeleaza functia check_command de m ori, unde se verifica ce tip
+de comanda este si se apeleaza functia corespunzatoare pentru a realiza acea
+comanda. Dupa ce s-au terminat toate comenzile, se apeleaza functiile frees si
+dll_free pentru a elibera memoria alocata in timpul executiei.
+
+Functia add:
+	- se formeaza planeta impreuna cu campurile ei (nume, lista de scuturi
+	si scuturile, nr. de killuri);
+	- se apeleaza functia add_node care adauga planeta in lista de planete;
+Functia blh:
+	- se parcurge lista de planete pana cand ajungem la planeta ceruta;
+	- se elibereaza memoria alocata pentru acea planeta;
+	- se apeleaza functia remove_node care elimina planeta din lista;
+Functia upg:
+	- se parcurge lista de planete pana cand ajungem la planeta ceruta;
+	- dupa ce a fost gasita planeta, se parcurge lista de scuturi a planetei
+	respective pana cand ajungem la scutul de pe pozitia ceruta;
+	- se aduna valoarea data la valoarea deja existenta;
+Functia expp:
+	- se parcurge lista de planete pana cand ajungem la planeta ceruta;
+	- cand este gasita, se apeleaza functia add_node care adauga planeta
+	in lista de planete;
+Functia rmv:
+	- se parcurge lista de planete pana cand ajungem la planeta ceruta
+	- se parcurge lista de scuturi pentru a numara cate elemente sunt
+	in lista;
+	- daca in lista sunt mai putin de 4 scuturi, se afiseaza mesajul cerut,
+	iar in caz contrar se apeleaza functia remove_node care elimina scutul
+	cerut din lista;
+Functia col:
+	- se parcurge lista de planete pana cand ajungem la planeta ceruta;
+	- cautam pentru fiecare planeta din cele 2 nodul in care are loc coliziune;
+	- daca valoarea din acel nod este 0 atunci planeta face implozie,
+    se peleaza functia blh pentru a o elimina din lista de planete si creste
+    nr de kill-uri pentru cealalta planeta; acest lucru se poate intampla
+    pentru ambele planete;
+Functia rot:
+	- se parcurge lista de planete pana cand ajungem la prima planeta;
+	- in functie de directia ceruta (c sau t) si nr de deplasari, se modifica
+	head-ul listei de scuturi a acelei planete;
+Functia shw:
+	- se parcurge lista de planete pana cand ajungem la planeta ceruta;
+	- se afiseaza la stdout datele in forma ceruta;
+	- este parcursa si lista de scuturi pentru a fi afisata.
